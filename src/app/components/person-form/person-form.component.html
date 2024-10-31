@@ -1,0 +1,159 @@
+<div class="container-fluid" style="width: 400px">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center">Add new student</h1>
+      </div>
+    </div>
+    <div [hidden]="submitted">
+      <form
+        action=""
+        method="post"
+        (ngSubmit)="addPerson()"
+        #studentForm="ngForm"
+      >
+        <div class="row">
+            <!--Nombre-->
+          <div class="col-12 mb-3">
+            <label for="name" class="form-label">Nombre *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              placeholder="Nombre"
+              required
+              [(ngModel)]="person.name"
+            />
+          </div>
+          <!--Apellidos-->
+          <div class="col-12 mb-3">
+            <label for="surname" class="form-label">Apellidos *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="surname"
+              name="surname"
+              placeholder="Apellidos"
+              required
+              [(ngModel)]="person.surname"
+            />
+          </div>
+          <!--NIF-->
+          <div class="col-6 mb-3">
+            <label for="nif" class="form-label">NIF</label>
+            <input
+              type="number"
+              class="form-control"
+              id="nif"
+              name="nif"
+              [(ngModel)]="person.nif"
+            />
+          </div>
+          <!--Telefono-->
+          <div class="col-6 mb-3">
+            <label for="phone" class="form-label">Teléfono *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phone"
+              name="phone"
+              placeholder="Phone number"
+              required
+              [(ngModel)]="person.phone"
+            />
+          </div>
+          <!--Email-->
+          <div class="col-12 mb-3">
+            <label for="email" class="form-label">Email *</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="Teléfono"
+              required
+              [(ngModel)]="person.email"
+            />
+          </div>
+
+          <div class="col-12 mb-3">
+            <label for="sex" class="form-label">Sexo *</label>
+  
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              name="sex"
+              id="sex"
+              required
+              [(ngModel)]="person.sexo"
+            >
+              <option value="" selected="selected">-Select one-</option>
+              @for(sex of sexList; track sex){
+              <option [value]="sex">{{ person.sexo }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="col-12 mb-3">
+            <label for="know" class="form-label">Como conocio la pagina *</label>
+  
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              name="know"
+              id="know"
+              required
+              [(ngModel)]="person.knowPage"
+            >
+              <option value="" selected="selected">-Select one-</option>
+              @for(know of knowList; track know){
+              <option [value]="know">{{ person.knowPage }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="col-12 mb-3">
+            <label for="password" class="form-label">Contraseña *</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              required
+              [(ngModel)]="person.password"
+            />
+          </div>
+          
+          <div class="col-12 mb-3">
+            <label for="confirmPassword" class="form-label">Repetir Contraseña *</label>
+            <input
+              type="password"
+              class="form-control"
+              id="confirmPassword"
+              name="confirmPassword"
+              required
+              [(ngModel)]="confirmPassword"
+            />
+          </div>
+
+          <div class="col-12">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="width: 100%"
+              [disabled]="!studentForm.form.valid"
+            >
+              Create student
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row" [hidden]="!submitted">
+      <div class="col-12">
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+          <div>Formulario enviado</div>
+        </div>
+      </div>
+    </div>
+  </div>
